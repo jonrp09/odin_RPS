@@ -3,8 +3,7 @@
     let win = 0, lose = 0, draw = 0;
 
     function computerPlay(){
-        let play = selection[Math.floor(Math.random()*3)];
-        return play;
+        return selection[Math.floor(Math.random() * 3)];
     }
     function playRound(playerSelection, computerSelection){
         playerSelection = playerSelection.toLowerCase();
