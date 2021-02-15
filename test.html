@@ -1,24 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 <script>
-    let answer = parseInt(prompt("enter a num: "));
+    let selection = ["rock", "paper", "scissors"];
 
-    for (let i=1; i <= answer; i++){
-        if ((i%3 === 0 && i%5 === 0))
-            console.log("FizzBuzz");
-        else if (i%3 ===0)
-            console.log("Fizz");
-        else if (i%5 === 0)
-            console.log("Buzz");
-        else
-            console.log(i);
+    function computerPlay(){
+        let play = selection[Math.floor(Math.random()*3)];
+        return play;
+    }
+    function playRound(playerSelection, computerSelection){
+
+        if ((playerSelection === selection[0] && computerSelection === selection[2]) ||
+            (playerSelection === selection[1] && computerSelection === selection[0]) ||
+            (playerSelection === selection[2] && computerSelection === selection[1])){
+            console.log("computer picked: " + computerSelection);
+            console.log("you win!");}
+        else if (playerSelection === computerSelection){
+            console.log("computer also picked: " + computerSelection);
+            console.log("you draw!");}
+        else {
+            console.log("computer picked: " + computerSelection);
+            console.log("you lose!");}
 
     }
+
+    function game(){
+        playRound(prompt(), computerPlay());
+    }
+    game();
 </script>
-</body>
-</html>
