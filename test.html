@@ -1,28 +1,49 @@
 <script>
     let selection = ["rock", "paper", "scissors"];
+    let win = 0, lose = 0, draw = 0;
 
     function computerPlay(){
         let play = selection[Math.floor(Math.random()*3)];
         return play;
     }
     function playRound(playerSelection, computerSelection){
+        playerSelection = playerSelection.toLowerCase();
 
         if ((playerSelection === selection[0] && computerSelection === selection[2]) ||
             (playerSelection === selection[1] && computerSelection === selection[0]) ||
-            (playerSelection === selection[2] && computerSelection === selection[1])){
+            (playerSelection === selection[2] && computerSelection === selection[1]))
+        {
             console.log("computer picked: " + computerSelection);
-            console.log("you win!");}
-        else if (playerSelection === computerSelection){
-            console.log("computer also picked: " + computerSelection);
-            console.log("you draw!");}
+            console.log("you picked: " + playerSelection)
+            console.log("you win!");
+            return ++win;
+        }
+        else if (playerSelection === computerSelection)
+        {
+            console.log("computer picked: " + computerSelection);
+            console.log("you picked: " + playerSelection)
+            console.log("you draw!");
+            return ++draw;
+        }
         else {
             console.log("computer picked: " + computerSelection);
-            console.log("you lose!");}
+            console.log("you picked: " + playerSelection)
+            console.log("you lose!");
+            return ++lose;
+        }
 
     }
 
-    function game(){
-        playRound(prompt(), computerPlay());
+    function game()
+    {
+        for (let x = 0; x < 5; x++)
+            playRound(prompt(), computerPlay());
     }
     game();
+    if (win > lose && win > draw)
+        console.log("You won the game!");
+    else if (draw > lose && draw >> win)
+        console.log("The game is a draw!");
+    else
+        console.log("You lose the game!");
 </script>
